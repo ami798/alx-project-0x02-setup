@@ -1,8 +1,11 @@
-export default function About() {
+import React from 'react';
+
+const AboutPage = () => {
   return (
-    <div>
-      <h1>About Page</h1>
-      <p>This is the about page of ALX Project 0x02.</p>
+    <div className="text-center mt-10">
+      <h1 className="text-3xl font-bold text-green-600">About Us</h1>
     </div>
   );
-}
+};
+
+export default AboutPage;
