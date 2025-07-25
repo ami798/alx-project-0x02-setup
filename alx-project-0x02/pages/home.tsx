@@ -1,23 +1,40 @@
 // pages/home.tsx
+import { useState } from "react";
 import Card from "@/components/common/Card";
+import PostModal from "@/components/common/PostModal";
+import Header from "@/components/layout/Header";
 
 export default function HomePage() {
-  return (
-    <div>
-      <h1 className="text-2xl font-bold mb-6 text-blue-900">Welcome to the Home Page!</h1>
+  const [modalOpen, setModalOpen] = useState(false);
+  const [posts, setPosts] = useState([
+    { title: "Welcome Post", content: "This is a sample post." },
+  ]);
 
-      <Card
-        title="Getting Started"
-        content="This project demonstrates basic routing, components, and props in Next.js."
-      />
-      <Card
-        title="Why Next.js?"
-        content="Next.js offers server-side rendering, routing, and more — ideal for full-stack projects."
-      />
-      <Card
-        title="Reusable Components"
-        content="By building reusable components like this Card, we keep our code clean and efficient."
-      />
-    </div>
+  const handleAddPost = (title: string, content: string) => {
+    setPosts([...posts, { title, content }]);
+  };
+
+  return (
+    <>
+      <Header />
+      <main className="p-6">
+        <button
+          onClick={() => setModalOpen(true)}
+          className="bg-blue-600 text-white px-4 py-2 rounded mb-4 hover:bg-blue-700"
+        >
+          Create New Post
+        </button>
+
+        {posts.map((post, index) => (
+          <Card key={index} title={post.title} content={post.content} />
+        ))}
+
+        <PostModal
+          isOpen={modalOpen}
+          onClose={() => setModalOpen(false)}
+          onSubmit={handleAddPost}
+        />
+      </main>
+    </>
   );
 }
