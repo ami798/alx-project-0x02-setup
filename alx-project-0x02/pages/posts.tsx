@@ -1,11 +1,11 @@
 import Header from "@/components/layout/Header";
 
-export default function AboutPage() {
+export default function PostsPage() {
   return (
     <>
       <Header />
       <main className="p-6">
-        <h2 className="text-2xl font-semibold">About Page</h2>
+        <h2 className="text-2xl font-semibold">Posts Page</h2>
         {/* Your content */}
       </main>
     </>
